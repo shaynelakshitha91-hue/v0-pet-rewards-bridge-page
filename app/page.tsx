@@ -77,7 +77,7 @@ export default function PetRewardsGuide() {
 
             {/* CTA Button */}
             <a
-              href="https://glctrk.org/aff_c?offer_id=716&aff_id=139288"
+              href="https://trkio.org/aff_c?offer_id=716&aff_id=139288"
               className="mt-6 block w-full max-w-sm mx-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-center py-4 px-6 rounded-full uppercase tracking-wide transition-all duration-200 hover:scale-[1.02] hover:shadow-xl text-sm sm:text-base"
             >
               START THE QUIZ
