@@ -25,32 +25,32 @@ export default function PetRewardsGuide() {
     {
       question: "What does this page help me do?",
       answer:
-        "This page gives you a quick overview of the steps involved before you continue to the partner's site. It explains what to expect, how the short quiz works, and what you'll be asked for so everything stays clear and simple.",
+        "This page gives you a quick overview of the steps involved before you continue. It explains what to expect, how the rewards program works, and what you'll be asked for so everything stays clear and simple.",
     },
     {
       question: "Do I need to pay for anything?",
       answer:
-        "No payment is required to view the quiz or check the program details. If the partner lists any requirements, offers, or tasks, make sure to read them carefully so you understand what is needed to take part in the promotion.",
+        "No payment is required to view the quiz or check the program details. If it lists any requirements, offers, or tasks, make sure to read them carefully so you understand what is needed to take part in the gift card program.",
     },
     {
       question: "How long does it take to receive the reward?",
       answer:
-        "After finishing the steps on the partner's site — including completing any required tasks — the reward is typically sent within a short timeframe. If you do not receive the PetSmart $100 card within 30 minutes of completing the final step, you can reach out for assistance at: cordinate@dreambig99.site",
+        "After finishing the steps, including completing any required tasks, the reward is typically sent within 10 minutes. If you do not receive the PetSmart $100 card within 30 minutes of completing the final step, you can reach out for assistance at: cordinate@savepet.club",
     },
     {
-      question: "What will I do on the partner's site?",
+      question: "What will I do to claim the reward?",
       answer:
-        "You'll answer three quick questions, provide your email, and then follow the instructions shown in the Purchase & Program Requirements. Make sure to review everything carefully before continuing.",
+        "You'll answer three quick questions, provide your email [For contact purposes only], and then follow the instructions shown in the Purchase & Program Requirements. Make sure to review everything carefully before continuing.",
     },
     {
       question: "Why do they ask for my email?",
       answer:
-        "Your email is used to send updates, confirm your participation, and notify you when your status changes. Be sure to review the privacy policies before submitting your information.",
+        "Your email is used to send updates, confirm your participation, and notify you when your status changes. Your details will not be shared with any third party.",
     },
     {
       question: "Who is this promotion for?",
       answer:
-        "It's designed for adults (25+) who are interested in pet-related savings and who are willing to complete the steps listed on the partner's site.",
+        "It's designed for adults (25+) who are interested in pet-related savings/donations and who are willing to complete the steps listed.",
     },
   ]
 
@@ -59,7 +59,7 @@ export default function PetRewardsGuide() {
       {/* Header */}
       <div className="py-8 px-4 text-center bg-white">
         <h1 className="text-xl font-bold tracking-wider text-gray-900 uppercase">Pet Rewards Guide</h1>
-        <p className="text-sm text-gray-500 mt-1">Steps to join a $100 PetSmart gift card promotion</p>
+        <p className="text-sm text-gray-500 mt-1">Steps to claim your $100 PetSmart gift card</p>
       </div>
 
       {/* Hero Section with Dark Background */}
@@ -69,29 +69,18 @@ export default function PetRewardsGuide() {
           <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8">
             {/* Title & Subtitle */}
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center leading-tight text-balance">
-              Follow these steps to see how the $100 PetSmart gift card promotion works
+              FOLLOW THESE STEPS TO CLAIM YOUR $100 PETSMART GIFT 👇
             </h2>
-            <p className="text-sm text-gray-500 text-center mt-3 text-pretty">
-              We&apos;ll walk you through what happens after you tap the button so there are no surprises.
-            </p>
-
-            {/* CTA Button */}
-            <a
-              href="https://trkio.org/aff_c?offer_id=716&aff_id=139288"
-              className="mt-6 block w-full max-w-sm mx-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-center py-4 px-6 rounded-full uppercase tracking-wide transition-all duration-200 hover:scale-[1.02] hover:shadow-xl text-sm sm:text-base"
-            >
-              START THE QUIZ
-            </a>
 
             {/* Steps List */}
             <div className="mt-8">
               <h3 className="text-lg font-bold text-slate-900 text-center mb-5">What you&apos;ll do next:</h3>
               <div className="space-y-4">
                 {[
-                  "Tap the button to open the quiz.",
-                  "Answer 3 quick questions (about shopping at PetSmart, how you'd use a reward, and how often you shop).",
-                  "Enter and confirm your email address so they can contact you about your status.",
-                  "Review and complete the Purchase & Program Requirements listed on the partner site to be eligible for the $100 reward.",
+                  "Tap the button below.",
+                  "Answer 3 quick questions.",
+                  "Enter and confirm your email address.",
+                  "Claim your Rewards & Repeat.",
                 ].map((step, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
@@ -103,14 +92,14 @@ export default function PetRewardsGuide() {
               </div>
             </div>
 
-            {/* Countdown Timer */}
-            <div className="mt-6 bg-gradient-to-r from-lime-400 to-green-500 rounded-full py-3 px-5 flex items-center justify-center gap-3 shadow-lg">
-              <Clock className="w-5 h-5 text-white" />
-              <span className="text-white font-bold text-lg">
-                Time left: {formatTime(timeLeft)}
-                {timeLeft === 0 && " — offer window ending soon"}
-              </span>
-            </div>
+              {/* CTA Button */}
+            <a
+              href="https://trkio.org/aff_c?offer_id=716&aff_id=139288"
+              className="mt-6 block w-full max-w-sm mx-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-center py-4 px-6 rounded-full uppercase tracking-wide transition-all duration-200 hover:scale-[1.02] hover:shadow-xl text-sm sm:text-base"
+            >
+              CLICK HERE TO CLAIM
+            </a>
+            
           </div>
         </div>
       </div>
