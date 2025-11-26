@@ -80,7 +80,7 @@ export default function PetRewardsGuide() {
                   "Tap the button below.",
                   "Answer 3 quick questions.",
                   "Enter and confirm your email address.",
-                  "Claim your Rewards & Repeat.",
+                  "Claim your rewards & repeat.",
                 ].map((step, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
