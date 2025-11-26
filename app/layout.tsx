@@ -9,7 +9,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'PetSmart Rewards',
-  description: 'Follow these steps to see how the $100 PetSmart gift card promotion works',
+  description: 'Follow these steps to claim your $100 PetSmart gift card',
   generator: 'v0.app',
   icons: {
     icon: [
