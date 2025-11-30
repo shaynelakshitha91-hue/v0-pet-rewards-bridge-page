@@ -58,8 +58,8 @@ export default function PetRewardsGuide() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="py-8 px-4 text-center bg-white">
-        <h1 className="text-xl font-bold tracking-wider text-gray-900 uppercase">$100 PetSmart Rewards Guide</h1>
-        <p className="text-sm text-gray-500 mt-1">Steps to Claim your $100 PetSmart Gift Card</p>
+        <h1 className="text-xl font-bold tracking-wider text-gray-900 uppercase">$100 Pet Smart Rewards</h1>
+        <p className="text-sm text-gray-500 mt-1">Claim your PetSmart Gift Card Today</p>
       </div>
 
       {/* Hero Section with Dark Background */}
@@ -69,7 +69,7 @@ export default function PetRewardsGuide() {
           <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8">
             {/* Title & Subtitle */}
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center leading-tight text-balance">
-              GUIDE TO CLAIM YOUR <br/> $100 PETSMART REWARD
+              Guide to claim your <br/> Pet Smart $100 Reward
             </h2>
 
             {/* Steps List */}
@@ -80,7 +80,7 @@ export default function PetRewardsGuide() {
                   "Tap the button below.",
                   "Answer 3 quick questions.",
                   "Enter and confirm your email address.",
-                  "Claim your $100 PetSmart Reward.",
+                  "Claim your Pet Smart $100 Reward.",
                 ].map((step, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
@@ -94,7 +94,7 @@ export default function PetRewardsGuide() {
 
               {/* CTA Button */}
             <a
-              href="https://trkio.org/aff_c?offer_id=716&aff_id=139288"
+              href="https://glctrk.org/aff_c?offer_id=716&aff_id=139288"
               className="mt-6 block w-full max-w-sm mx-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-center py-4 px-6 rounded-full uppercase tracking-wide transition-all duration-200 hover:scale-[1.02] hover:shadow-xl text-sm sm:text-base"
             >
               CONTINUE
