@@ -23,9 +23,14 @@ export default function PetRewardsGuide() {
 
   const faqs = [
     {
-      question: "What does this page help me do? Can I help animals here?",
+      question: "Can I help animals here?",
       answer:
-        "You can help animals through the partner's website. Select one answer in the first screen and continue to the second screen. You can select the 'Give it to a friend' option to give away your reward or keep it to shop for your pets.",
+        "Yes, you can help animals through the partner's website. Select one answer in the first screen and continue to the second screen. You can select the 'Give it to a friend' option to give away your reward or keep it to shop for your pets.",
+    },
+     {
+      question: "What does this page help me do?",
+      answer:
+        "This page gives you a quick overview of the steps involved before you continue. It explains what to expect, how the rewards program works, and what you'll be asked for so everything stays clear and simple.",
     },
     {
       question: "Do I need to pay for anything?",
@@ -58,8 +63,8 @@ export default function PetRewardsGuide() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="py-8 px-4 text-center bg-white">
-        <h1 className="text-xl font-bold tracking-wider text-gray-900 uppercase">$100 Pet Smart Rewards</h1>
-        <p className="text-sm text-gray-500 mt-1">Claim your PetSmart Gift Card Today</p>
+        <h1 className="text-xl font-bold tracking-wider text-gray-900 uppercase">Get a $100 Pet Smart Gift Card</h1>
+        <p className="text-sm text-gray-500 mt-1">Shop, Play and Earn Rewards.</p>
       </div>
 
       {/* Hero Section with Dark Background */}
