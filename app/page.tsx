@@ -1,159 +1,180 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronDown, Clock } from "lucide-react"
+import { ChevronDown, CheckCircle2 } from "lucide-react"
+import Image from "next/image"
 
 export default function PetRewardsGuide() {
-  const [timeLeft, setTimeLeft] = useState(900) // 15 minutes in seconds
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0))
-    }, 1000)
+  // Countdown timer removed? No, let's keep it but simpler.
+  // It creates urgency for "limited spots".
+  const [spotsLeft, setSpotsLeft] = useState(14)
 
+  useEffect(() => {
+    // Fake spot counter decreasing slowly
+    const timer = setInterval(() => {
+        setSpotsLeft((prev) => (prev > 5 ? prev - 1 : 5))
+    }, 15000)
     return () => clearInterval(timer)
   }, [])
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
-  }
-
   const faqs = [
     {
-      question: "Can I help animals here?",
+      question: "Can I use this for any pet?",
       answer:
-        "Yes, you can help animals through the partner's website. Select one answer in the first screen and continue to the second screen. You can select the 'Give it to a friend' option to give away your reward or keep it to shop for your pets.",
-    },
-     {
-      question: "What does this page help me do?",
-      answer:
-        "This page gives you a quick overview of the steps involved before you continue. It explains what to expect, how the rewards program works, and what you'll be asked for so everything stays clear and simple.",
+        "Yes! The $100 reward can be used to buy food, toys, treats, or supplies for dogs, cats, fish, or any pet supported by the retailer.",
     },
     {
-      question: "Do I need to pay for anything?",
+      question: "Is there a cost to participate?",
       answer:
-        "No payment is required to view the quiz or check the program details. If it lists any requirements, offers, or tasks, make sure to read them carefully so you understand what is needed to take part in the gift card program.",
+        "Accessing this guide is free. However, the reward program itself typically requires you to complete a set number of 'Deals' (usually 3-5), which may include trying new apps, services, or trials. Some deals might require a purchase.",
     },
     {
-      question: "How long does it take to receive the reward?",
+      question: "When do I get the reward?",
       answer:
-        "After finishing the steps, including completing any required tasks, the reward is typically sent within 10 minutes. If you do not receive the PetSmart $100 card within 30 minutes of completing the final step, you can reach out for assistance at: cordinate@savepet.club",
+        "Rewards are generally processed after you have fully completed the required number of deals as per the program terms. Verification usually takes a few days, not minutes. Please read the partner's instructions carefully.",
     },
     {
-      question: "What will I do to claim the reward?",
+      question: "What steps are required?",
       answer:
-        "You'll answer three quick questions, provide your email [For contact purposes only], and then follow the instructions shown in the Purchase & Program Requirements. Make sure to review everything carefully before continuing.",
+        "You'll typically need to: 1) Register with your email, 2) Complete the survey, 3) Finish the required deals (silver/gold/platinum levels).",
     },
     {
-      question: "Why do they ask for my email?",
+      question: "Who is eligible?",
       answer:
-        "Your email is used to send updates, confirm your participation, and notify you when your status changes. Your details will not be shared with any third party.",
-    },
-    {
-      question: "Who is this promotion for?",
-      answer:
-        "It's designed for adults (25+) who are interested in pet-related savings/donations and who are willing to complete the steps listed.",
+        "This program is generally for residents of the US, aged 18+ (sometimes 25+ depending on specific terms), who are new users to the advertised deals.",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="py-8 px-4 text-center bg-white">
-        <h1 className="text-xl font-bold tracking-wider text-gray-900 uppercase">Get a $100 Pet Smart Gift Card</h1>
-        <p className="text-sm text-gray-500 mt-1">Shop, Play and Earn Rewards.</p>
+    <div className="min-h-screen bg-slate-50 font-sans">
+      
+      {/* Top Warning Bar */}
+      <div className="bg-red-600 text-white text-center py-2 px-4 text-xs font-bold tracking-wide">
+        LIMITED TIME: ONLY {spotsLeft} SPOTS REMAINING FOR TODAY
       </div>
 
-      {/* Hero Section with Dark Background */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 px-4">
-        <div className="max-w-lg mx-auto">
-          {/* White Card */}
-          <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8">
-            {/* Title & Subtitle */}
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center leading-tight text-balance">
-              Guide to claim your <br/> Pet Smart $100 Reward
-            </h2>
-
-            {/* Steps List */}
-            <div className="mt-8">
-              <h3 className="text-lg font-bold text-slate-900 text-center mb-5">What you&apos;ll do next:</h3>
-              <div className="space-y-4">
-                {[
-                  "Tap the button below.",
-                  "Answer 3 quick questions.",
-                  "Enter and confirm your email address.",
-                  "Claim your Pet Smart $100 Reward.",
-                ].map((step, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
-                      {index + 1}
-                    </div>
-                    <p className="text-sm text-gray-700 pt-1 leading-relaxed">{step}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-              {/* CTA Button */}
-            <a
-              href="https://glctrk.org/aff_c?offer_id=716&aff_id=139288"
-              className="mt-6 block w-full max-w-sm mx-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-center py-4 px-6 rounded-full uppercase tracking-wide transition-all duration-200 hover:scale-[1.02] hover:shadow-xl text-sm sm:text-base"
-            >
-              CONTINUE
-            </a>
+      {/* Hero Section */}
+      <div className="relative bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-10 px-4 sm:px-6 lg:px-8">
             
+            <main className="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
+              <div className="sm:text-center lg:text-left">
+                <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-bold mb-4">
+                   Updated for 2025 🇺🇸
+                </span>
+                <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl">
+                  <span className="block xl:inline">Treat Your Best Friend</span>{' '}
+                  <span className="block text-red-600 xl:inline">With a $100 Reward</span>
+                </h1>
+                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  Don&apos;t let inflation stop you from spoiling your pet. Follow our simple guide to claim a <strong>$100 PetSmart Gift Card</strong> by trying out new apps and services.
+                </p>
+                
+                <div className="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start">
+                   {/* CTA BUTTON */}
+                   <a
+                    href="https://glctrk.org/aff_c?offer_id=716&aff_id=139288"
+                    className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-transform hover:scale-105 shadow-lg"
+                  >
+                    Get Started Now
+                  </a>
+                </div>
+                <p className="mt-3 text-xs text-gray-400">
+                    *Program requirements apply. See terms on next page.
+                </p>
+              </div>
+            </main>
           </div>
+        </div>
+        
+        {/* Image Section (Right Side on Desktop, Top on Mobile) */}
+        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-slate-100">
+          <div className="h-56 w-full sm:h-72 md:h-96 lg:w-full lg:h-full relative">
+            {/* Make sure you added pet-hero.jpg to public folder! */}
+            {/* If you don't have an image yet, this div will just show a gray placeholder */}
+            <Image 
+                src="/pet-hero.jpg" 
+                alt="Happy Dog"
+                fill
+                style={{ objectFit: "cover" }}
+                className="opacity-90"
+                priority
+            />
+             {/* If image is missing, remove the <Image> component above and uncomment this: 
+             <div className="w-full h-full flex items-center justify-center text-gray-400">Add pet-hero.jpg to public folder</div>
+             */}
+          </div>
+        </div>
+      </div>
+
+      {/* Steps Section */}
+      <div className="bg-slate-900 py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-10">How It Works</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                    { title: "1. Click Link", desc: "Tap the button above to visit the official offer page." },
+                    { title: "2. Register", desc: "Enter your basic info to start the rewards program." },
+                    { title: "3. Complete Deals", desc: "Finish the required 3-5 deals to unlock your $100 card." }
+                ].map((step, idx) => (
+                    <div key={idx} className="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                        <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+                            {idx + 1}
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                        <p className="text-slate-400 text-sm">{step.desc}</p>
+                    </div>
+                ))}
+            </div>
         </div>
       </div>
 
       {/* FAQ Section */}
-      <div className="py-16 px-4 bg-gray-50">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center">Frequently Asked Questions</h2>
-          <p className="text-center text-gray-600 mt-2 mb-8">A quick overview before you continue.</p>
-
-          <div className="space-y-3">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
-                >
-                  <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${
-                      openFaq === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{faq.answer}</div>
-                )}
-              </div>
-            ))}
-          </div>
+      <div className="py-16 px-4 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-slate-900 mb-8">Common Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <button
+                onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <span className="font-semibold text-slate-800">{faq.question}</span>
+                <ChevronDown
+                  className={`w-5 h-5 text-gray-400 transition-transform ${
+                    openFaq === index ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {openFaq === index && (
+                <div className="px-6 pb-4 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                    {faq.answer}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-100 py-8 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-4 text-sm text-gray-600 mb-3">
-            <a href="#" className="hover:text-gray-900 transition-colors">
-              Privacy Policy
-            </a>
-            <span className="text-gray-400">|</span>
-            <a href="#" className="hover:text-gray-900 transition-colors">
-              Contact
-            </a>
+      <footer className="bg-white border-t border-gray-200 py-8 px-4 text-center">
+        <div className="max-w-4xl mx-auto text-xs text-gray-500 space-y-4">
+          <div className="flex justify-center gap-4 text-sm font-medium text-gray-600">
+            <a href="#">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+            <span>•</span>
+            <a href="#">Contact</a>
           </div>
-          <p className="text-xs text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            The partner's website manages all rewards and promotions that you visit after clicking the 'continue' button.
-            Please review the terms, conditions, and requirements.
+          <p>
+            <strong>Disclaimer:</strong> This website is an independent guide and is not affiliated with PetSmart or any other brand. 
+            The reward is provided by a third-party partner and requires the completion of specific program requirements (Deals). 
+            Results may vary. See partner website for full T&C.
           </p>
+          <p>&copy; 2025 SavePet.Club. All rights reserved.</p>
         </div>
       </footer>
     </div>
