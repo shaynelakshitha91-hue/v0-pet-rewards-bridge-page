@@ -1,14 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronDown, CheckCircle2 } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import Image from "next/image"
 
 export default function PetRewardsGuide() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-
-  // Countdown timer removed? No, let's keep it but simpler.
-  // It creates urgency for "limited spots".
   const [spotsLeft, setSpotsLeft] = useState(14)
 
   useEffect(() => {
@@ -33,7 +30,7 @@ export default function PetRewardsGuide() {
     {
       question: "When do I get the reward?",
       answer:
-        "Rewards are generally processed after you have fully completed the required number of deals as per the program terms. Verification usually takes a few days, not minutes. Please read the partner's instructions carefully.",
+        "Rewards are generally processed after you have fully completed the required number of deals as per the program terms. Verification usually takes a few days. Please read the partner's instructions carefully.",
     },
     {
       question: "What steps are required?",
@@ -48,10 +45,10 @@ export default function PetRewardsGuide() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       
-      {/* Top Warning Bar */}
-      <div className="bg-red-600 text-white text-center py-2 px-4 text-xs font-bold tracking-wide">
+      {/* Top Warning Bar - High Contrast Red */}
+      <div className="bg-red-700 text-white text-center py-2 px-4 text-xs font-bold tracking-wide">
         LIMITED TIME: ONLY {spotsLeft} SPOTS REMAINING FOR TODAY
       </div>
 
@@ -62,27 +59,31 @@ export default function PetRewardsGuide() {
             
             <main className="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
               <div className="sm:text-center lg:text-left">
-                <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-bold mb-4">
+                <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-900 text-sm font-bold mb-4">
                    Updated for 2025 🇺🇸
                 </span>
                 <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl">
                   <span className="block xl:inline">Treat Your Best Friend</span>{' '}
-                  <span className="block text-red-600 xl:inline">With a $100 Reward</span>
+                  <span className="block text-red-700 xl:inline">With a $100 Reward</span>
                 </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                
+                {/* Improved Contrast: Slate-700 instead of Gray-500 */}
+                <p className="mt-3 text-base text-slate-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   Don&apos;t let inflation stop you from spoiling your pet. Follow our simple guide to claim a <strong>$100 PetSmart Gift Card</strong> by trying out new apps and services.
                 </p>
                 
                 <div className="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start">
-                   {/* CTA BUTTON */}
+                   {/* CTA BUTTON - Darker Blue for Accessibility */}
                    <a
                     href="https://glctrk.org/aff_c?offer_id=716&aff_id=139288"
-                    className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-transform hover:scale-105 shadow-lg"
+                    className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-blue-700 hover:bg-blue-800 md:py-4 md:text-lg md:px-10 transition-transform hover:scale-105 shadow-lg"
+                    aria-label="Get started with the reward program"
                   >
                     Get Started Now
                   </a>
                 </div>
-                <p className="mt-3 text-xs text-gray-400">
+                {/* Improved Contrast: Slate-500 for small text */}
+                <p className="mt-3 text-xs text-slate-500 font-medium">
                     *Program requirements apply. See terms on next page.
                 </p>
               </div>
@@ -90,23 +91,18 @@ export default function PetRewardsGuide() {
           </div>
         </div>
         
-        {/* Image Section (Right Side on Desktop, Top on Mobile) */}
-        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-slate-100">
-          <div className="h-56 w-full sm:h-72 md:h-96 lg:w-full lg:h-full relative">
-            {/* Make sure you added pet-hero.jpg to public folder! */}
-            {/* If you don't have an image yet, this div will just show a gray placeholder */}
+        {/* Image Section */}
+        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-slate-100 h-64 sm:h-72 md:h-96 lg:h-full relative">
+            {/* SPEED FIX: Added 'sizes' prop to prevent large image load on mobile */}
             <Image 
                 src="/pet-hero.jpg" 
-                alt="Happy Dog"
+                alt="Happy Dog looking up"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
-                className="opacity-90"
+                className="opacity-95"
                 priority
             />
-             {/* If image is missing, remove the <Image> component above and uncomment this: 
-             <div className="w-full h-full flex items-center justify-center text-gray-400">Add pet-hero.jpg to public folder</div>
-             */}
-          </div>
         </div>
       </div>
 
@@ -120,12 +116,12 @@ export default function PetRewardsGuide() {
                     { title: "2. Register", desc: "Enter your basic info to start the rewards program." },
                     { title: "3. Complete Deals", desc: "Finish the required 3-5 deals to unlock your $100 card." }
                 ].map((step, idx) => (
-                    <div key={idx} className="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div key={idx} className="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-lg">
                         <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
                             {idx + 1}
                         </div>
                         <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                        <p className="text-slate-400 text-sm">{step.desc}</p>
+                        <p className="text-slate-300 text-sm leading-relaxed">{step.desc}</p>
                     </div>
                 ))}
             </div>
@@ -137,20 +133,21 @@ export default function PetRewardsGuide() {
         <h2 className="text-3xl font-bold text-center text-slate-900 mb-8">Common Questions</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                aria-expanded={openFaq === index}
               >
-                <span className="font-semibold text-slate-800">{faq.question}</span>
+                <span className="font-bold text-slate-800 pr-4">{faq.question}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-gray-400 transition-transform ${
+                  className={`w-5 h-5 text-slate-500 flex-shrink-0 transition-transform ${
                     openFaq === index ? "rotate-180" : ""
                   }`}
                 />
               </button>
               {openFaq === index && (
-                <div className="px-6 pb-4 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                <div className="px-6 pb-4 text-sm text-slate-700 leading-relaxed border-t border-gray-100 pt-4">
                     {faq.answer}
                 </div>
               )}
@@ -161,15 +158,15 @@ export default function PetRewardsGuide() {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-8 px-4 text-center">
-        <div className="max-w-4xl mx-auto text-xs text-gray-500 space-y-4">
-          <div className="flex justify-center gap-4 text-sm font-medium text-gray-600">
-            <a href="#">Privacy Policy</a>
-            <span>•</span>
-            <a href="#">Terms of Service</a>
-            <span>•</span>
-            <a href="#">Contact</a>
+        <div className="max-w-4xl mx-auto text-xs text-slate-500 space-y-4">
+          <div className="flex justify-center gap-4 text-sm font-medium text-slate-700">
+            <a href="#" className="hover:text-blue-700 transition-colors">Privacy Policy</a>
+            <span className="text-slate-300">•</span>
+            <a href="#" className="hover:text-blue-700 transition-colors">Terms of Service</a>
+            <span className="text-slate-300">•</span>
+            <a href="#" className="hover:text-blue-700 transition-colors">Contact</a>
           </div>
-          <p>
+          <p className="leading-relaxed">
             <strong>Disclaimer:</strong> This website is an independent guide and is not affiliated with PetSmart or any other brand. 
             The reward is provided by a third-party partner and requires the completion of specific program requirements (Deals). 
             Results may vary. See partner website for full T&C.
